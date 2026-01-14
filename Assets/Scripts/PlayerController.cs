@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float speed = 5f;
     [SerializeField] private Transform playerMovePoint;
+    [SerializeField] private Transform playerDirection;
     private InputAction _movement;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -25,10 +26,12 @@ public class PlayerController : MonoBehaviour
         if (Mathf.Abs(direction.x) > Mathf.Abs(direction.y))
         {
             playerMovePoint.position += new Vector3(Mathf.RoundToInt(direction.x), 0f, 0f);
+            playerDirection.position = transform.position + new Vector3(Mathf.RoundToInt(direction.x), 0f, 0f);
         }
         else
         {
             playerMovePoint.position += new Vector3(0f, Mathf.RoundToInt(direction.y), 0f);
+            playerDirection.position = transform.position + new Vector3(0f, Mathf.RoundToInt(direction.y), 0f);
         }
     }
 }
