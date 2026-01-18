@@ -11,7 +11,7 @@ In a world of 0's and 1's; you're the digit 0, previously the digit 1. You were 
 You can move other numbers to unlock doors, adjust power levels, or swap between locked digits to solve the puzzles on that floor. 
 
 ## Some Screenshots
-[Speaker Banner](Screenshots/Chat_Banner.png)
+![Speaker Banner](Screenshots/Chat_Banner.png)
 
 
 #### Game Engine 
