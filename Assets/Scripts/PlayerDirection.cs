@@ -1,10 +1,9 @@
-using System;
-using Unity.VisualScripting;
+
 using UnityEngine;
 
 public class PlayerDirection : MonoBehaviour
 {
-    private SpriteRenderer _spriteRenderer; 
+    private SpriteRenderer _spriteRenderer;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
