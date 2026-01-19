@@ -14,7 +14,6 @@ public class Speaker : MonoBehaviour
     private TMP_Text _bannerText;
     private Canvas _helpCanvas;
     private InputAction _actionPressed;
-    private bool _isBannerOpen;
 
     void Start()
     {
@@ -27,19 +26,22 @@ public class Speaker : MonoBehaviour
 
     void Update()
     {
-        if (_actionPressed.IsPressed() && _helpCanvas.enabled && !_isBannerOpen)
+        if (!_actionPressed.WasPressedThisFrame()) return;
+        
+        if (_helpCanvas.enabled && !_bannerCanvas.enabled)
         {
-            Debug.Log("This will open the banner..");
-            _isBannerOpen = true;
             _bannerCanvas.enabled = true;
-            Debug.Log(_dialogue[_messageIndex]);
             _bannerText.text = _dialogue[_messageIndex];
             _messageIndex += 1;
-        } else if (_actionPressed.triggered && _helpCanvas.enabled && _isBannerOpen & _messageIndex < _dialogue.Length)
+        } else if (_helpCanvas.enabled && _bannerCanvas.enabled && _messageIndex < _dialogue.Length)
         {
-            Debug.Log(_dialogue[_messageIndex]);
             _bannerText.text = _dialogue[_messageIndex];
             _messageIndex += 1;
+        } else if (_helpCanvas.enabled && _bannerCanvas.enabled && _messageIndex == _dialogue.Length)
+        {
+            _helpCanvas.enabled = false;
+            _bannerCanvas.enabled = false;
+            _messageIndex = 0;
         }
     }
     
@@ -51,7 +53,6 @@ public class Speaker : MonoBehaviour
     private void OnTriggerExit2D(Collider2D other)
     {
         _helpCanvas.enabled = false;
-        _isBannerOpen = false;
         _bannerCanvas.enabled = false;
         _messageIndex = 0;
     }

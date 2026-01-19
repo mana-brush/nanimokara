@@ -27,10 +27,9 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
-        if (_isTargeted && _swap.triggered)
+        if (_isTargeted && _swap.WasPressedThisFrame())
         {
             SwapSprite(playerSpriteRenderer, _targetSpriteRenderer);
-            Debug.Log("Swapping sprite renderer");
         }
         
         transform.position = Vector3.MoveTowards(transform.position, playerMovePoint.position, speed * Time.deltaTime);

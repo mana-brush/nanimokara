@@ -34,9 +34,6 @@ public class LockRelease : MonoBehaviour
         }
         else
         {
-            Debug.Log("Turning off tilemap and rigidbody");
-            Debug.Log(rb);
-            Debug.Log(tilemapRenderer);
             rb.GetComponent<Collider2D>().enabled = false;
             tilemapRenderer.enabled = false;
         }
