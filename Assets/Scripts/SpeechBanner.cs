@@ -8,7 +8,7 @@ public class SpeechBanner : MonoBehaviour
     [SerializeField] private SpeakerSpeech speakerSpeech;
 
     private InputAction _enterButton;
-    private readonly Dictionary<SpeakerSpeech, string[]> _speakerSpeeches = new ()
+    private static readonly Dictionary<SpeakerSpeech, string[]> SpeakerSpeeches = new ()
     {
         {SpeakerSpeech.TutorialStage1, new []{ "Hi there, Zero! Welcome to the bottom!", "Try using the W,A,S,D keys to move around!" }},
         {SpeakerSpeech.TutorialStage2, new []{ "You made it up here. Great!", "There's a locked gate up ahead, but you can turn it off by standing on that switch.", "There are also some blocks you can push around. Give it a try!" }},
@@ -17,9 +17,9 @@ public class SpeechBanner : MonoBehaviour
     };
 
 
-    public string[] GetDialogue(SpeakerSpeech speech)
+    public static string[] GetDialogue(SpeakerSpeech speech)
     {
-        return _speakerSpeeches[speech];
+        return SpeakerSpeeches[speech];
     }
 }
 
